@@ -1,4 +1,5 @@
-import { enableProdMode } from '@angular/core';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 
@@ -8,4 +9,6 @@ if (environment.production) {
   enableProdMode();
 }
 
-bootstrapApplication(AppComponent).catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [importProvidersFrom(OverlayModule)],
+}).catch((err) => console.error(err));

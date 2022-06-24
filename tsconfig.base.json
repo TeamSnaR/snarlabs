@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@snarlabs/shared/ui-overlay": ["libs/shared/ui-overlay/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
