@@ -21,8 +21,8 @@ export class AppComponent {
   showOverlay() {
     const uiOverlayRef = this.overlayService.open();
 
-    setTimeout(() => {
-      uiOverlayRef.close();
-    }, 2000);
+    // setTimeout(() => {
+    //   uiOverlayRef.close();
+    // }, 2000);
   }
 }

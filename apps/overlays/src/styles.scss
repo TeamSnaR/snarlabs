@@ -44,3 +44,10 @@
     @apply bg-slate-500 opacity-80;
   }
 }
+
+.cdk-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+}

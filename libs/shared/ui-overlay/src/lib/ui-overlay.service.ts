@@ -29,6 +29,8 @@ export class UiOverlayService {
     overlayRef.attach(componentPortal);
 
     const uiOverlayRef = new UiOverlayRef(overlayRef);
+    overlayRef.backdropClick().subscribe(() => uiOverlayRef.close());
+
     return uiOverlayRef;
   }
 
@@ -42,7 +44,7 @@ export class UiOverlayService {
       .position()
       .global()
       .centerHorizontally()
-      .right();
+      .centerVertically();
 
     const overlayConfig = new OverlayConfig({
       hasBackdrop: config.hasBackdrop,

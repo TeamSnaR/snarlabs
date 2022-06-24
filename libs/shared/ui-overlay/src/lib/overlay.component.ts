@@ -10,7 +10,15 @@ import { CommonModule } from '@angular/common';
   selector: 'snarlabs-overlay',
   standalone: true,
   imports: [CommonModule],
-  template: ` <p class="p-4">overlay works!</p> `,
+  template: `
+    <h2 class="text-4xl">hello world panel</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quibusdam
+      ratione doloribus hic excepturi non, alias consequuntur repellendus est
+      minima dignissimos, suscipit beatae aperiam necessitatibus assumenda
+      aliquam labore? Dolor, hic!
+    </p>
+  `,
   styles: [
     `
       :host {
