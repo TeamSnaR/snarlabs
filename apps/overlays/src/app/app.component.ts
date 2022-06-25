@@ -19,10 +19,11 @@ export class AppComponent {
   title = 'overlays';
   constructor(private readonly overlayService: UiOverlayService) {}
   showOverlay() {
-    const uiOverlayRef = this.overlayService.open();
-
-    // setTimeout(() => {
-    //   uiOverlayRef.close();
-    // }, 2000);
+    const uiOverlayRef = this.overlayService.open({
+      data: {
+        heading: 'heading data via params',
+        text: 'lorem ipsum',
+      },
+    });
   }
 }
