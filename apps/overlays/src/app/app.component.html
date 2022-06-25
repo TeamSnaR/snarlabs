@@ -1,2 +1,69 @@
-<snarlabs-nx-welcome></snarlabs-nx-welcome>
-<button type="button" (click)="showOverlay()">Show overlay</button>
+<div class="min-h-full">
+  <div class="py-10">
+    <header>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold leading-tight text-gray-900">Overlays</h1>
+      </div>
+    </header>
+    <main>
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="px-4 py-8 sm:px-0 space-y-8">
+          <article class="max-w-prose">
+            <h2 class="text-2xl">Custom overlay from tutorial</h2>
+            <p class="mt-6 space-y-4">
+              Taken from
+              <a
+                href="https://blog.thoughtram.io/angular/2017/11/20/custom-overlays-with-angulars-cdk.html"
+                class="underline"
+                target="_blank"
+                rel="noopener"
+                >Custom Overlays with Angular's CDK by Dominic Elm.</a
+              >
+              Adapted to work in Angular 14.
+              <span class="block">
+                <button
+                  type="button"
+                  class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  (click)="showOverlay()"
+                >
+                  Show
+                </button>
+              </span>
+            </p>
+          </article>
+          <article class="max-w-prose">
+            <h2 class="text-2xl">Slide out</h2>
+            <p class="mt-6 space-y-4">
+              Taken from
+              <a
+                href="https://blog.thoughtram.io/angular/2017/11/20/custom-overlays-with-angulars-cdk.html"
+                class="underline"
+                target="_blank"
+                rel="noopener"
+                >Custom Overlays with Angular's CDK by Dominic Elm.</a
+              >
+              Adapted to work in Angular 14. and
+              <a
+                href="https://codinglatte.com/posts/angular/reusable-modal-overlay-using-angular-cdk-overlay/"
+                class="underline"
+                target="_blank"
+                rel="noopener"
+                >How to build a reusable Modal Overlay/Dialog Using Angular CDK
+                by Maina Wycliffe.</a
+              >
+              <span class="block">
+                <button
+                  type="button"
+                  class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  (click)="showOverlay()"
+                >
+                  Show
+                </button>
+              </span>
+            </p>
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
