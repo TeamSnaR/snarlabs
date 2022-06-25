@@ -3,6 +3,8 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiOverlayService } from '@snarlabs/shared/ui-overlay';
 import { NxWelcomeComponent } from './nx-welcome.component';
 

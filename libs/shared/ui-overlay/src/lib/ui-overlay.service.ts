@@ -41,6 +41,7 @@ export class UiOverlayService {
 
     overlayRef.backdropClick().subscribe(() => uiOverlayRef.close());
 
+    uiOverlayRef.componentInstance = component;
     return uiOverlayRef;
   }
 

@@ -1,6 +1,7 @@
 import { OverlayModule } from '@angular/cdk/overlay';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app/app.component';
 
 import { environment } from './environments/environment';
@@ -10,5 +11,8 @@ if (environment.production) {
 }
 
 bootstrapApplication(AppComponent, {
-  providers: [importProvidersFrom(OverlayModule)],
+  providers: [
+    importProvidersFrom(OverlayModule),
+    importProvidersFrom(BrowserAnimationsModule),
+  ],
 }).catch((err) => console.error(err));
