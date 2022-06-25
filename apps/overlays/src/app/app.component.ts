@@ -6,6 +6,7 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiOverlayService } from '@snarlabs/shared/ui-overlay';
+import { UiModalDialogService } from '@snarlabs/shared/ui/ui-modal-dialog';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
@@ -19,7 +20,12 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 })
 export class AppComponent {
   title = 'overlays';
-  constructor(private readonly overlayService: UiOverlayService) {}
+  constructor(
+    private readonly overlayService: UiOverlayService,
+    private readonly uiModalDialogService: UiModalDialogService
+  ) {
+    this.showModal();
+  }
   showOverlay() {
     const uiOverlayRef = this.overlayService.open({
       data: {
@@ -27,5 +33,9 @@ export class AppComponent {
         text: 'lorem ipsum',
       },
     });
+  }
+
+  showModal() {
+    this.uiModalDialogService.open();
   }
 }

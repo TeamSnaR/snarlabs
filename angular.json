@@ -4,6 +4,7 @@
   "projects": {
     "overlays": "apps/overlays",
     "overlays-e2e": "apps/overlays-e2e",
-    "shared-ui-overlay": "libs/shared/ui-overlay"
+    "shared-ui-overlay": "libs/shared/ui-overlay",
+    "shared-ui-ui-modal-dialog": "libs/shared/ui/ui-modal-dialog"
   }
 }
