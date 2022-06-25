@@ -19,6 +19,7 @@ import {
 import { BehaviorSubject, shareReplay, Subject } from 'rxjs';
 import { tap } from 'rxjs';
 import { AnimationEvent } from '@angular/animations';
+import { OverlayToolbarComponent } from './overlay-toolbar.component';
 
 const ESCAPE_CODE = 'Escape';
 const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
@@ -26,7 +27,7 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
 @Component({
   selector: 'snarlabs-overlay',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, OverlayToolbarComponent],
   animations: [
     trigger('fade', [
       state('fadeOut', style({ opacity: 0 })),
@@ -61,6 +62,14 @@ const ANIMATION_TIMINGS = '400ms cubic-bezier(0.25, 0.8, 0.25, 1)';
           {{ uiOverlayData.text }}
         </p>
       </div>
+      <snarlabs-overlay-toolbar *ngIf="(loadingObs$ | async) === false">
+        <button
+          type="button"
+          class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          Close
+        </button>
+      </snarlabs-overlay-toolbar>
     </div>
   `,
   styles: [
