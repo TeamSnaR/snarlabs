@@ -4,7 +4,6 @@ import {
   EventEmitter,
   HostListener,
   Inject,
-  OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,7 +15,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { BehaviorSubject, shareReplay, Subject } from 'rxjs';
+import { BehaviorSubject, shareReplay } from 'rxjs';
 import { tap } from 'rxjs';
 import { AnimationEvent } from '@angular/animations';
 import { OverlayToolbarComponent } from './overlay-toolbar.component';

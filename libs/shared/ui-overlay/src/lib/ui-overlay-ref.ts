@@ -17,8 +17,6 @@ export class UiOverlayRef {
         take(1)
       )
       .subscribe(() => {
-        console.log('close animation start');
-
         this._beforeClose.next();
         this._beforeClose.complete();
         this.overlayRef.detachBackdrop();
@@ -33,8 +31,6 @@ export class UiOverlayRef {
         take(1)
       )
       .subscribe(() => {
-        console.log('close animation done');
-
         this.overlayRef.dispose();
         this._afterClosed.next();
         this._afterClosed.complete();
@@ -49,14 +45,10 @@ export class UiOverlayRef {
   }
 
   afterClosed(): Observable<void> {
-    console.log('after closed');
-
     return this._afterClosed.asObservable();
   }
 
   beforeClose(): Observable<void> {
-    console.log('before closed');
-
     return this._beforeClose.asObservable();
   }
 }

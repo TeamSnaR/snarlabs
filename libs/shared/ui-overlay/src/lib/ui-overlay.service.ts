@@ -1,10 +1,9 @@
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
+import { ComponentPortal } from '@angular/cdk/portal';
 import { ComponentRef, Injectable, Injector } from '@angular/core';
 import { OverlayComponent } from './overlay.component';
 import { UiOverlayRef } from './ui-overlay-ref';
-import { UiOverlayConfig, UiOverlayData } from './ui-overlay.config';
-import { UI_OVERLAY_DATA } from './ui-overlay.tokens';
+import { UiOverlayConfig } from './ui-overlay.config';
 
 const DEFAULT_CONFIG: UiOverlayConfig = {
   hasBackdrop: true,
@@ -72,13 +71,6 @@ export class UiOverlayService {
     config: UiOverlayConfig,
     uiOverlayRef: UiOverlayRef
   ): Injector {
-    // Instantiate new WeakMap for our custom injection tokens
-    const injectionTokens = new WeakMap();
-
-    // Set custom injection tokens,
-    injectionTokens.set(UiOverlayRef, uiOverlayRef);
-    injectionTokens.set(UI_OVERLAY_DATA, config.data);
-
     return Injector.create({
       providers: [
         { provide: UiOverlayRef, useValue: uiOverlayRef },
