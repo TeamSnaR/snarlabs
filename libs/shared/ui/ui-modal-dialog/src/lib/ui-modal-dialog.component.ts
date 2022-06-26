@@ -3,6 +3,7 @@ import {
   Component,
   EventEmitter,
   HostListener,
+  Inject,
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
@@ -16,7 +17,9 @@ import {
 } from '@angular/animations';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { AnimationEvent } from '@angular/animations';
+import { UiModalDialogRef } from './ui-modal-dialog-ref';
 
+const ESCAPE_KEY = 'Escape';
 @Component({
   selector: 'snarlabs-ui-modal-dialog',
   standalone: true,
@@ -59,14 +62,16 @@ export class UiModalDialogComponent {
   animationState$ = new BehaviorSubject<'void' | 'enter' | 'leave'>('enter');
   animationStateChanged = new Subject<AnimationEvent>();
 
-  // @HostListener('document:keydown', ['$event']) private handleKeydown(
-  //   event: KeyboardEvent
-  // ) {
-  //   if (event.key === 'escape') {
-  //     this.uiOverlayRef.close();
-  //   }
-  // }
-  // constructor()
+  @HostListener('document:keydown', ['$event']) private handleKeydown(
+    event: KeyboardEvent
+  ) {
+    if (event.key === ESCAPE_KEY) {
+      this.uiModalDialogRef.close();
+    }
+  }
+  constructor(
+    @Inject('UI_MODAL_DIALOG_REF') private uiModalDialogRef: UiModalDialogRef
+  ) {}
   onAnimationStart(animationEvent: AnimationEvent) {
     this.animationStateChanged.next(animationEvent);
   }

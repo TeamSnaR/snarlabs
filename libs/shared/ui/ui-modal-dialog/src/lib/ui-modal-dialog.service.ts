@@ -1,30 +1,35 @@
-import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { UiModalDialogRef } from './ui-modal-dialog-ref';
 import { UiModalDialogComponent } from './ui-modal-dialog.component';
 
 const DEFAULT_CONFIG: OverlayConfig = {
   hasBackdrop: true,
-  // panelClass: ['bg-white', 'w-screen', 'max-w-md'],
-  backdropClass: 'dark-backdrop',
+  backdropClass: 'bg-slate-500',
 };
 
 @Injectable({
   providedIn: 'root',
 })
 export class UiModalDialogService {
-  constructor(private readonly overlay: Overlay) {}
+  constructor(
+    private readonly overlay: Overlay,
+    private readonly injector: Injector
+  ) {}
 
   open() {
     const overlayRef = this.createOverlay();
     const uiModalDialogRef = new UiModalDialogRef(overlayRef);
-    const componentPortal = new ComponentPortal(UiModalDialogComponent);
-    const containerRef = overlayRef.attach(componentPortal);
     overlayRef.backdropClick().subscribe(() => {
       uiModalDialogRef.close();
     });
-    uiModalDialogRef.componentInstance = containerRef.instance;
+    uiModalDialogRef.componentInstance = this.attachModalDialogContainer(
+      overlayRef,
+      uiModalDialogRef
+    );
+
+    return uiModalDialogRef;
   }
 
   private createOverlay() {
@@ -46,5 +51,30 @@ export class UiModalDialogService {
     });
 
     return overlayConfig;
+  }
+
+  private attachModalDialogContainer(
+    overlayRef: OverlayRef,
+    uiModalDialogRef: UiModalDialogRef
+  ) {
+    const modalDialogInjector = this.createInjector(uiModalDialogRef);
+
+    const componentPortal = new ComponentPortal(
+      UiModalDialogComponent,
+      null,
+      modalDialogInjector
+    );
+    const containerRef = overlayRef.attach(componentPortal);
+
+    return containerRef.instance;
+  }
+
+  private createInjector(uiModalDialogRef: UiModalDialogRef) {
+    return Injector.create({
+      providers: [
+        { provide: 'UI_MODAL_DIALOG_REF', useValue: uiModalDialogRef },
+      ],
+      parent: this.injector,
+    });
   }
 }
