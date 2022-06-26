@@ -1,10 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   HostListener,
   Inject,
-  OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -80,5 +78,9 @@ export class UiModalDialogComponent {
   }
   startExitAnimation() {
     this.animationState$.next('leave');
+  }
+
+  close() {
+    this.uiModalDialogRef.close();
   }
 }
