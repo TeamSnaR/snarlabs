@@ -36,6 +36,11 @@ export class AppComponent {
   }
 
   showModal() {
-    this.uiModalDialogService.open();
+    const ref = this.uiModalDialogService.open({
+      kind: 'slide-over',
+      hasBackdrop: true,
+    });
+    ref.addCloseGuard((result) => result !== undefined);
+    ref.afterClosed$.subscribe((result) => console.log(result));
   }
 }

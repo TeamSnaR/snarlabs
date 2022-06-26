@@ -64,7 +64,7 @@ export class UiModalDialogComponent {
     event: KeyboardEvent
   ) {
     if (event.key === ESCAPE_KEY) {
-      this.uiModalDialogRef.close();
+      this.uiModalDialogRef.tryClose();
     }
   }
   constructor(
@@ -81,6 +81,6 @@ export class UiModalDialogComponent {
   }
 
   close() {
-    this.uiModalDialogRef.close();
+    this.uiModalDialogRef.tryClose();
   }
 }
