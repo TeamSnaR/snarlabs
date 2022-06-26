@@ -1,5 +1,5 @@
 import { OverlayRef } from '@angular/cdk/overlay';
-import { filter, Observable, Subject, take } from 'rxjs';
+import { filter, Subject, take } from 'rxjs';
 import { UiModalDialogComponent } from './ui-modal-dialog.component';
 import { AnimationEvent } from '@angular/animations';
 
@@ -9,6 +9,9 @@ export class UiModalDialogRef {
   // stream that emits data after modal dialog has been closed
   private afterClosedStream = new Subject<void>();
   componentInstance: UiModalDialogComponent | null = null;
+  beforeClose$ = this.beforeCloseStream.asObservable();
+
+  afterClosed$ = this.afterClosedStream.asObservable();
   constructor(private readonly overlayRef: OverlayRef) {}
 
   close() {
@@ -45,13 +48,5 @@ export class UiModalDialogRef {
       });
 
     this.componentInstance?.startExitAnimation();
-  }
-
-  beforeClose(): Observable<void> {
-    return this.beforeCloseStream.asObservable();
-  }
-
-  afterClosed(): Observable<void> {
-    return this.afterClosedStream.asObservable();
   }
 }
